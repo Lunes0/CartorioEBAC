@@ -6,13 +6,13 @@
 int registro()
 {
   setlocale(LC_ALL, "Portuguese");
-  
+
   char arquivo[40];
   char cpf[40];
   char nome[40];
   char sobrenome[40];
   char cargo[40];
-  
+
   printf("Digite o CPF que deseja cadastrar: ");
   scanf("%s", cpf);
 
@@ -29,7 +29,7 @@ int registro()
 
   printf("Digite o nome a ser cadastrado: ");
   scanf("%s", nome);
-  
+
   file = fopen(arquivo, "a");
   fprintf(file,nome);
   fclose(file);
@@ -40,7 +40,7 @@ int registro()
 
   printf("Digite o sobrenome a ser cadastrado: ");
   scanf("%s", sobrenome);
-  
+
   file = fopen(arquivo, "a");
   fprintf(file,sobrenome);
   fclose(file);
@@ -51,7 +51,7 @@ int registro()
 
   printf("Digite o cargo a ser cadastrado: ");
   scanf("%s", cargo);
-  
+
   file = fopen(arquivo, "a");
   fprintf(file,cargo);
   fclose(file);
@@ -62,7 +62,7 @@ int registro()
 int consultar()
 {
   setlocale(LC_ALL, "Portuguese");
-  
+
   char cpf[40];
   char conteudo[200];
 
@@ -71,12 +71,12 @@ int consultar()
 
   FILE *file;
   file = fopen(cpf, "r");
-  
+
   if(file == NULL)
   {
     printf("CPF não encontrado.\n");
   }
-  
+
   while(fgets(conteudo, 200, file) != NULL)
   {
     printf("\nEssas são as informações do usuário: ");
@@ -103,16 +103,17 @@ int main()
 
   for(validacao=1;validacao=1;)
   {
-    
+
     system("cls");
-    
+
     setlocale(LC_ALL, "Portuguese"); //definir a linguagem
-  
+
     printf("### Cartório da EBAC ###\n\n"); //início do menu
     printf("Escola a opção desejada:\n\n");
     printf("\t1 - Registrar aluno\n");
     printf("\t2 - Consultar aluno\n");
     printf("\t3 - Deletar aluno\n\n\n");
+    printf("\t0 - Sair\n\n");
     printf("Opção: "); //final do menu
 
     scanf("%d", &opcao); //armazenar a escolha do usuário
@@ -128,16 +129,21 @@ int main()
       case 2:
       consultar();
       break;
-    
+
       case 3:
       deletar();
+      break;
+
+      case 0:
+      printf("Obrigado por usar o sistema.\n");
+      return 0;
       break;
 
       default:
       printf("Opção inválida\n");
       system("pause");
       break;
-      
+
     } //fim da seleção 
   }
 }

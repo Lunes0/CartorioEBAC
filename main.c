@@ -7,7 +7,7 @@ int registro()
 {
   setlocale(LC_ALL, "Portuguese");
 
-  char arquivo[40];
+  char arquivo[40]; //criação de variáveis strings
   char cpf[40];
   char nome[40];
   char sobrenome[40];
@@ -61,23 +61,23 @@ int registro()
 
 int consultar()
 {
-  setlocale(LC_ALL, "Portuguese");
+  setlocale(LC_ALL, "Portuguese"); //define idioma para português.
 
-  char cpf[40];
+  char cpf[40]; //strings variáveis
   char conteudo[200];
 
-  printf("Digite o CPF a ser consultado: ");
+  printf("Digite o CPF a ser consultado: "); //recebe os valores para a consulta
   scanf("%s", cpf);
 
   FILE *file;
-  file = fopen(cpf, "r");
+  file = fopen(cpf, "r"); //abre o arquivo referente ao valor que o usuário escreveu e lê as informações presente nele.
 
-  if(file == NULL)
+  if(file == NULL) //se o arquivo não existe retorna uma mensagem de erro
   {
     printf("CPF não encontrado.\n");
   }
 
-  while(fgets(conteudo, 200, file) != NULL)
+  while(fgets(conteudo, 200, file) != NULL) //se o arquivo existe, ele retorna as informações presentes nele.
   {
     printf("\nEssas são as informações do usuário: ");
     printf("%s", conteudo);
@@ -91,8 +91,26 @@ int consultar()
 
 int deletar()
 {
-  printf("Você escolheu deletar aluno\n");
-  system("pause");
+  setlocale(LC_ALL, "Portuguese");
+  
+  char cpf[40];
+
+  printf("Digite o CPF do usuário a ser deletado: ");
+  scanf("%s",cpf);
+
+  FILE *file;
+  file = fopen(cpf,"r");
+
+  if(file == NULL)
+  {
+    printf("Usuário não encontrado.\n");
+    system("pause");
+  }
+  else
+  {
+    remove(cpf);
+    printf("Usuário deletado com sucesso.\n");
+  }
 }
 
 
@@ -107,12 +125,12 @@ int main()
   printf("Login de administrador.\n\n Digite a sua senha: ");
   scanf("%s",senha);
 
-  comparacao = strcmp(senha, "admin");
+  comparacao = strcmp(senha, "admin"); //strcmp compara strings
 
   if(comparacao == 0)
   {
     system("cls");
-    for(validacao=1;validacao=1;)
+    for(validacao=1;validacao=1;) //laço de repetição para ficar nessa tela até escolher uma opção válida
     {
   
       system("cls");
@@ -147,7 +165,7 @@ int main()
   
         case 0:
         printf("Obrigado por usar o sistema.\n");
-        return 0;
+        return 0; //encerra o programa
         break;
   
         default:
